@@ -234,9 +234,9 @@ for i in df['section_listing'].unique():
     temp_full = df_full.loc[df['section_listing'] == i] 
     temp_half = df_half.loc[df['section_listing'] == i] 
     temp_partial = df_partial.loc[df['section_listing'] == i] 
-    seat_full=sum(temp_full['9%'])/41
-    seat_half=sum(temp_half['9%'])/22
-    seat_partial=sum(temp_partial['9%'])/11
+    seat_full=sum(temp_full['9%'])
+    seat_half=sum(temp_half['9%'])
+    seat_partial=sum(temp_partial['9%'])
     seat_tot=seat_full+seat_half+seat_partial
     sections_list.append(i)
     values_tot.append(seat_tot)
@@ -249,10 +249,10 @@ totals = {
     "Half_Season_Revenue_py" : values_half,
     "Partial_Season_Revenue_py" : values_partial
 }
-df_total_revenue['New_Total_Revenue_per_Game']=values_tot
-df_total_revenue['New_Full_Season_Revenue_per_Game']=values_full
-df_total_revenue['New_Half_Season_Revenue_per_Game']=values_half
-df_total_revenue['New_Partial_Season_Revenue_per_Game']=values_partial
+df_total_revenue['New_Total_Revenue_per_Season']=values_tot
+df_total_revenue['New_Full_Season_Revenue_per_Season']=values_full
+df_total_revenue['New_Half_Season_Revenue_per_Season']=values_half
+df_total_revenue['New_Partial_Season_Revenue_per_Season']=values_partial
 
 # +
 col1, col2 = st.columns(2)
@@ -318,9 +318,14 @@ if st.sidebar.checkbox('Sections (Sorted by Total Seats)'):
                  barmode='group', height=400)
     st.plotly_chart(fig)
 
+temp2=df_total_revenue
+temp2=temp2.sort_values(by=['New_Total_Revenue_per_Season'])
+if st.sidebar.checkbox('Sections (Sorted by Total Seats)'):
+    fig = px.bar(temp2, x="Sections", y=["Total_Revenue_per_Season","New_Total_Revenue_per_Season"], 
+                 barmode='group', height=400)
+    st.plotly_chart(fig)
 
-
-
+df_total_revenue
 
 
 
