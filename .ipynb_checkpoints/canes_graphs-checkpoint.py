@@ -293,7 +293,7 @@ if 'Total Revenue per Season' in attribute:
     # st.dataframe(df) # if need to display dataframe
     st.plotly_chart(fig)
 
-if 'New Total Revenue per Season' in attribute:
+if 'Total New Revenue per Season' in attribute:
     fig = px.bar(temp, x="Sections", y=["New_Total_Revenue_per_Season", "New_Full_Season_Revenue_per_Season", 
                                         "New_Half_Season_Revenue_per_Season","New_Partial_Season_Revenue_per_Season"], 
                  barmode='group', height=400)
@@ -307,7 +307,7 @@ if 'Total Revenue per Game' in attribute:
     # st.dataframe(df) # if need to display dataframe
     st.plotly_chart(fig)
 
-if 'New Total Revenue per Game' in attribute:
+if 'Total New Revenue per Game' in attribute:
     fig = px.bar(temp, x="Sections", y=["New_Total_Revenue_per_Game", "New_Full_Season_Revenue_per_Game", 
                                         "New_Half_Season_Revenue_per_Game","New_Partial_Season_Revenue_per_Game"], 
                  barmode='group', height=400)
