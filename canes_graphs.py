@@ -320,12 +320,12 @@ if st.sidebar.checkbox('Sections (Sorted by Total Seats)'):
 
 temp2=df_total_revenue
 temp2=temp2.sort_values(by=['New_Total_Revenue_per_Season'])
-if st.sidebar.checkbox('Sections (Sorted by Total Seats)'):
+if st.sidebar.checkbox('Sections  (Sorted by New Total Revenue)'):
     fig = px.bar(temp2, x="Sections", y=["Total_Revenue_per_Season","New_Total_Revenue_per_Season"], 
                  barmode='group', height=400)
     st.plotly_chart(fig)
 
-df_total_revenue
+
 
 
 
