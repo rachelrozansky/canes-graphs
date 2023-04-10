@@ -334,7 +334,8 @@ if st.sidebar.checkbox('Pie Chart of Revenue'):
     fig.update_layout(margin=dict(l=20, r=20, t=30, b=0),)
     st.plotly_chart(fig, use_container_width=True)
 
-'''col1, col2 = st.columns(2)
+# +
+col1, col2 = st.columns(2)
 
 with col1:
     section2 = st.multiselect(
@@ -349,7 +350,17 @@ with col1:
 with col2:
     attribute2 = st.selectbox(
         'What attributes would you like to look at?',
-        ('Total Revenue per Season','Total Revenue per Game','Total Season Ticket Holders','Number of Season Ticket Holders per Game',)
-        )'''
+        ('New Total Revenue per Season','New Total Revenue per Game')
+        )
+# -
 
-     
+temp2= df_total_revenue.loc[df_total_revenue['Sections'].isin(section2)]
+
+if 'Total Revenue per Season' in attribute:
+    fig = px.bar(temp2, x="Sections", y=["New_Total_Revenue_per_Season", "New_Full_Season_Revenue_per_Season", 
+                                        "New_Half_Season_Revenue_per_Season","New_Partial_Season_Revenue_per_Season"], 
+                 barmode='group', height=400)
+    # st.dataframe(df) # if need to display dataframe
+    st.plotly_chart(fig)
+
+
