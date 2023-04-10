@@ -274,7 +274,7 @@ with col2:
     attribute = st.selectbox(
         'What attributes would you like to look at?',
         ('Total Revenue per Season','Total Revenue per Game','Total Season Ticket Holders','Number of Season Ticket Holders per Game',
-        'New Total Revenue per Season', 'New Total Revenue per Game')
+        'Total New Revenue per Season', 'Total New Revenue per Game')
         )
 # -
 
