@@ -266,13 +266,12 @@ with col1:
            'Center Ice Preferred', 'Mezzanine', 'FanZone', 'Champions Club',
            'Sideline  ', 'Club Ledge', 'Row 1', 'Lower Level South Preferred',
            'Lower Level North', 'Center Ice Club', 'Terrace Preferred',
-           'Club Select', 'Row 2', 'Champions Club Preferred', 'Sideline'))
+           'Club Select', 'Row 2', 'Champions Club Preferred'))
 with col2:
     attribute = st.selectbox(
         'What attributes would you like to look at?',
         ('Total Revenue per Season','Total Revenue per Game','Total Season Ticket Holders','Number of Season Ticket Holders per Game',)
         )
-type(attribute)
 # -
 
 temp= df_total_revenue.loc[df_total_revenue['Sections'].isin(section)]
@@ -332,6 +331,22 @@ if st.sidebar.checkbox('Pie Chart of Revenue'):
     fig.update_layout(margin=dict(l=20, r=20, t=30, b=0),)
     st.plotly_chart(fig, use_container_width=True)
 
+'''col1, col2 = st.columns(2)
 
+with col1:
+    section2 = st.multiselect(
+        'What Sections would you like to compare?',
+        ('Terrace Value', 'Lower Level South', 'Sideline Preferred',
+           'Center Ice Top 8', 'Center Ice Terrace', 'Shoot Twice Goal Zone',
+           'Center Ice  ', 'Lower Level North Preferred',
+           'Center Ice Preferred', 'Mezzanine', 'FanZone', 'Champions Club',
+           'Sideline  ', 'Club Ledge', 'Row 1', 'Lower Level South Preferred',
+           'Lower Level North', 'Center Ice Club', 'Terrace Preferred',
+           'Club Select', 'Row 2', 'Champions Club Preferred', 'Sideline'))
+with col2:
+    attribute2 = st.selectbox(
+        'What attributes would you like to look at?',
+        ('Total Revenue per Season','Total Revenue per Game','Total Season Ticket Holders','Number of Season Ticket Holders per Game',)
+        )'''
 
      
