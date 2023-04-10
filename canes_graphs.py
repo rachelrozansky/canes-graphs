@@ -356,14 +356,14 @@ with col2:
 
 temp2= df_total_revenue.loc[df_total_revenue['Sections'].isin(section2)]
 
-if 'New Total Revenue per Season' in attribute:
+if 'New Total Revenue per Season' in attribute2:
     fig = px.bar(temp2, x="Sections", y=["New_Total_Revenue_per_Season", "New_Full_Season_Revenue_per_Season", 
                                         "New_Half_Season_Revenue_per_Season","New_Partial_Season_Revenue_per_Season"], 
                  barmode='group', height=400)
     # st.dataframe(df) # if need to display dataframe
     st.plotly_chart(fig)
 
-if 'New Total Revenue per Season per Game' in attribute:
+if 'New Total Revenue per Season per Game' in attribute2:
     fig = px.bar(temp2, x="Sections", y=["New_Total_Revenue_per_Game", "New_Full_Season_Revenue_per_Game", 
                                         "New_Half_Season_Revenue_per_Game","New_Partial_Season_Revenue_per_Game"], 
                  barmode='group', height=400)
