@@ -39,8 +39,8 @@ df=df[df['tickettypesid'].isin(options)]
 df['9%']=df['plan_base_price']*1.09
 df.loc[df['section_listing'] == 'Row 1', '9%'] = df['plan_base_price']*1.3365
 df.loc[df['section_listing'] == 'Row 2', '9%'] = df['plan_base_price']*1.16
-df.loc[df['section_listing'] == 'Lower Level North', '9%'] = df['plan_base_price']*1.09
-df.loc[df['section_listing'] == 'Lower Level North Preferred', '9%'] = df['plan_base_price']*1.09
+df.loc[df['section_listing'] == 'Lower Level North', '9%'] = df['plan_base_price']*1.1672
+df.loc[df['section_listing'] == 'Lower Level North Preferred', '9%'] = df['plan_base_price']*1.1852
 
 
 
