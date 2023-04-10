@@ -325,7 +325,11 @@ if st.sidebar.checkbox('Sections  (Sorted by New Total Revenue)'):
                  barmode='group', height=400)
     st.plotly_chart(fig)
 
-
+fig = px.pie(temp2, values='Total_Revenue_per_Season', names='Sections',
+                 title='Total Revenue per Season per Section',
+                 height=300, width=200)
+fig.update_layout(margin=dict(l=20, r=20, t=30, b=0),)
+st.plotly_chart(fig, use_container_width=True)
 
 
 
