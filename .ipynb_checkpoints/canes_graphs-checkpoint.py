@@ -35,13 +35,22 @@ options=['Renewed Full Season', 'Renewed PH Full Season','New PH Full Season', '
         'Renewed Partial Season', 'New Partial Season', 'New Half Season', '\xa0','Platinum PH Full Season']
 df=df[df['tickettypesid'].isin(options)]
 #df2=df
-df
 
-col1, col2 = st.columns(2)
-with col1:
-    st.image("canes_map.png", width=350)
-with col2:
-    st.image("legend.png", width = 250)
+df['9%']=df['plan_base_price']*1.09
+df.loc[df['section_listing'] == 'Row 1', '9%'] = df['plan_base_price']*1.3365
+df.loc[df['section_listing'] == 'Row 2', '9%'] = df['plan_base_price']*1.16
+df.loc[df['section_listing'] == 'Lower Level North', '9%'] = df['plan_base_price']*1.09
+df.loc[df['section_listing'] == 'Lower Level North Preferred', '9%'] = df['plan_base_price']*1.09
+
+
+
+#col1, col2 = st.columns(2)
+#with col1:
+    #st.image("canes_map.png", width=350)
+#with col2:
+    #st.image("legend.png", width = 250)
+st.image("canes_map.png", width=700)
+st.image("legend.png", width = 250)
 
 # +
 
@@ -178,6 +187,72 @@ df_total_revenue['Total_Revenue_per_Game']=values_tot
 df_total_revenue['Full_Season_Revenue_per_Game']=values_full
 df_total_revenue['Half_Season_Revenue_per_Game']=values_half
 df_total_revenue['Partial_Season_Revenue_per_Game']=values_partial
+
+df_full=df.loc[df['plan'] == 'Full Season'] 
+df_half=df.loc[df['plan'] == 'Half Season'] 
+df_partial=df.loc[df['plan'] == 'Partial Season'] 
+values_tot= []
+values_full= []
+values_half= []
+values_partial= []
+sections_list=[]
+for i in df['section_listing'].unique():
+    temp_tot = df.loc[df['section_listing'] == i] 
+    temp_full = df_full.loc[df['section_listing'] == i] 
+    temp_half = df_half.loc[df['section_listing'] == i] 
+    temp_partial = df_partial.loc[df['section_listing'] == i] 
+    seat_full=sum(temp_full['9%'])/41
+    seat_half=sum(temp_half['9%'])/22
+    seat_partial=sum(temp_partial['9%'])/11
+    seat_tot=seat_full+seat_half+seat_partial
+    sections_list.append(i)
+    values_tot.append(seat_tot)
+    values_full.append(seat_full)
+    values_half.append(seat_half)
+    values_partial.append(seat_partial)
+totals = {
+    "Total_Revenue_py" : values_tot,
+    "Full_Season_Revenue_py" : values_full,
+    "Half_Season_Revenue_py" : values_half,
+    "Partial_Season_Revenue_py" : values_partial
+}
+df_total_revenue['New_Total_Revenue_per_Game']=values_tot
+df_total_revenue['New_Full_Season_Revenue_per_Game']=values_full
+df_total_revenue['New_Half_Season_Revenue_per_Game']=values_half
+df_total_revenue['New_Partial_Season_Revenue_per_Game']=values_partial
+
+df_full=df.loc[df['plan'] == 'Full Season'] 
+df_half=df.loc[df['plan'] == 'Half Season'] 
+df_partial=df.loc[df['plan'] == 'Partial Season'] 
+values_tot= []
+values_full= []
+values_half= []
+values_partial= []
+sections_list=[]
+for i in df['section_listing'].unique():
+    temp_tot = df.loc[df['section_listing'] == i] 
+    temp_full = df_full.loc[df['section_listing'] == i] 
+    temp_half = df_half.loc[df['section_listing'] == i] 
+    temp_partial = df_partial.loc[df['section_listing'] == i] 
+    seat_full=sum(temp_full['9%'])/41
+    seat_half=sum(temp_half['9%'])/22
+    seat_partial=sum(temp_partial['9%'])/11
+    seat_tot=seat_full+seat_half+seat_partial
+    sections_list.append(i)
+    values_tot.append(seat_tot)
+    values_full.append(seat_full)
+    values_half.append(seat_half)
+    values_partial.append(seat_partial)
+totals = {
+    "Total_Revenue_py" : values_tot,
+    "Full_Season_Revenue_py" : values_full,
+    "Half_Season_Revenue_py" : values_half,
+    "Partial_Season_Revenue_py" : values_partial
+}
+df_total_revenue['New_Total_Revenue_per_Game']=values_tot
+df_total_revenue['New_Full_Season_Revenue_per_Game']=values_full
+df_total_revenue['New_Half_Season_Revenue_per_Game']=values_half
+df_total_revenue['New_Partial_Season_Revenue_per_Game']=values_partial
 
 # +
 col1, col2 = st.columns(2)
