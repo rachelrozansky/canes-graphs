@@ -254,6 +254,9 @@ df_total_revenue['New_Full_Season_Revenue_per_Season']=values_full
 df_total_revenue['New_Half_Season_Revenue_per_Season']=values_half
 df_total_revenue['New_Partial_Season_Revenue_per_Season']=values_partial
 
+df_total_revenue = df_total_revenue[:-1]
+
+
 # +
 col1, col2 = st.columns(2)
 
