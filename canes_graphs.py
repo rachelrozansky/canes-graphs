@@ -346,7 +346,7 @@ with col1:
            'Center Ice Preferred', 'Mezzanine', 'FanZone', 'Champions Club',
            'Sideline  ', 'Club Ledge', 'Row 1', 'Lower Level South Preferred',
            'Lower Level North', 'Center Ice Club', 'Terrace Preferred',
-           'Club Select', 'Row 2', 'Champions Club Preferred', 'Sideline'))
+           'Club Select', 'Row 2', 'Champions Club Preferred'))
 with col2:
     attribute2 = st.selectbox(
         'What attributes would you like to look at?',
