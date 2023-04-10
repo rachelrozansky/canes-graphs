@@ -31,6 +31,12 @@ df = pd.read_csv('ticket_sales_3.csv')
 df['plan_base_price'] = df['plan_base_price'].astype('int')
 type(df['plan_base_price'])
 
+options=['Renewed Full Season', 'Renewed PH Full Season','New PH Full Season', 'New Full Season', 'Renewed Half Season',
+        'Renewed Partial Season', 'New Partial Season', 'New Half Season', '\xa0','Platinum PH Full Season']
+df=df[df['tickettypesid'].isin(options)]
+#df2=df
+df
+
 col1, col2 = st.columns(2)
 with col1:
     st.image("canes_map.png", width=350)
