@@ -42,7 +42,15 @@ df.loc[df['section_listing'] == 'Row 2', '9%'] = df['plan_base_price']*1.16
 df.loc[df['section_listing'] == 'Lower Level North', '9%'] = df['plan_base_price']*1.1672
 df.loc[df['section_listing'] == 'Lower Level North Preferred', '9%'] = df['plan_base_price']*1.1852
 
-
+capacity = pd.DataFrame()
+sections1= ['FanZone','Terrace Preferred','Shoot Twice Goal Zone','Terrace Value','Center Ice Terrace','Lower Level South',
+            'Center Ice Club','Champions Club','Mezzanine','Sideline Preferred','Center Ice Preferred','Club Select',
+            'Center Ice Top 8','Lower Level South Preferred','Center Ice','Lower Level North Preferred',
+            'Sideline','Row 1','Champions Club Preferred','Club Ledge','Lower Level North','Row 2']
+capacities = [51.81,53.15,56.78,63.36,64.09,73.13,74.22,81.19,84.60,84.68,84.68,85.40,86.48,87.92,90.14,91.16,91.66,96.05,
+                96.67,97.96,98.62,99.42]
+capacity['Sections']=sections1
+capacity['Capacities']=capacities
 
 #col1, col2 = st.columns(2)
 #with col1:
@@ -351,12 +359,15 @@ if st.sidebar.checkbox('Pie Chart of Revenue'):
 
 if st.sidebar.checkbox('Pie Chart of Seats'):
     fig = px.pie(temp2, values='Total_seats', names='Sections',
-                     title='Total Revenue per Season per Section',
+                     title='Total Season Tickets Sold per Section',
                      height=300, width=200)
     fig.update_layout(margin=dict(l=20, r=20, t=30, b=0),)
     st.plotly_chart(fig, use_container_width=True)
 
-
+if st.sidebar.checkbox('Percentage Capacity of each Section'):
+    fig = px.bar(capacity, x="Sections", y=["Capacities"], 
+                 barmode='group', height=400)
+    st.plotly_chart(fig)
 
 
 
