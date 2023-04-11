@@ -349,7 +349,12 @@ if st.sidebar.checkbox('Pie Chart of Revenue'):
     fig.update_layout(margin=dict(l=20, r=20, t=30, b=0),)
     st.plotly_chart(fig, use_container_width=True)
 
-
+if st.sidebar.checkbox('Pie Chart of Seats'):
+    fig = px.pie(temp2, values='Total_Seats', names='Sections',
+                     title='Total Revenue per Season per Section',
+                     height=300, width=200)
+    fig.update_layout(margin=dict(l=20, r=20, t=30, b=0),)
+    st.plotly_chart(fig, use_container_width=True)
 
 
 
